@@ -64,7 +64,8 @@ class Panier {
             //Affiche la modification du poids
             if(isset($_GET['idFruit']) && $_GET['idFruit'] === $fruit->getNom()) {
                 $affichage .= '<form method="POST" action="#">';
-                    $affichage .= "<input type='hidden' value='". $fruit->getNom() ."' name='idFruit' id='modification'>";
+                    $affichage .= "<input type='hidden' name='type' value='modification' id='type'>";
+                    $affichage .= "<input type='hidden' value='". $fruit->getNom() ."' name='idFruit' id='idFruit'>";
                     $affichage .= "<input type='number' name='poidsFruit' id='poidsFruit' value='" . $fruit->getPoids() . "'>";
             } else {
                 $affichage .=  $fruit->getPoids();
@@ -93,8 +94,12 @@ class Panier {
             }
             $affichage .= '</td>';
             $affichage .= '<td>';
-                $affichage .= '<form method="GET" action="#">';
-                    $affichage .= "<input type='submit' class='btn btn-primary' value='Supprimer'>";
+                $affichage .= '<form method="POST" action="#">';
+                    $affichage .= "<input type='hidden' name='idFruit' value='". $fruit->getNom() ."' id='idFruit'>";
+                    $affichage .= "<input type='hidden' name='prixFruit' value='". $fruit->getPrix() ."' id='prixFruit'>";
+                    $affichage .= "<input type='hidden' name='poidsFruit' value='". $fruit->getPoids() ."' id='poidsFruit'>";
+                    $affichage .= "<input type='hidden' name='type' value='supprimer' id='type'>";
+                    $affichage .= "<input type='submit' class='btn btn-danger' value='Supprimer du panier'>";
                 $affichage .= '</form>';
             $affichage .= '</td>';
         $affichage .= '</tr>';

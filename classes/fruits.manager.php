@@ -52,5 +52,18 @@ class fruitManager{
             return false;
         }
     }
+
+    public static function deleteFruitFromPanier($nomFruit) {
+        $pdo = monPDO::getPDO();
+        $req = "UPDATE fruit SET identifiant = null WHERE Nom = :nom";
+        $stmt = $pdo->prepare($req);
+        $stmt->bindValue(":nom", $nomFruit);
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            return false;
+        }
+    } 
 }
 ?>
