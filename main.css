@@ -1,6 +1,14 @@
 .perso_backgroundColorBlueLight, .perso_backgroundColorBlueDark, .btn-primary{
     background-color:#283645 !important;
 }
+thead>tr {
+    font-weight: bold;
+    /* text-transform: uppercase; */
+}
+
+input[type="number"] {
+    /* text-align: center; */
+}
 /*.titreBleu {
     color:blue;
 }

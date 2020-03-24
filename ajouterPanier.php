@@ -10,17 +10,17 @@
 
 <form class="" action="#" method ="POST">
     <div class="form-group ">
-    <label for="client">Nom du client : </label>
-    <input type="text" class="form-control" name="client" id="client" aria-describedby="client" >
-    <!-- <small id="client" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        <label for="client">Nom du client : </label>
+        <input type="text" class="form-control" name="client" id="client" aria-describedby="client" >
+        <!-- <small id="client" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
     </div>
     <div class="form-group">
-    <label for="nb_pommes">Nombre de pommes : </label>
-    <input type="number" class="form-control" name="nb_pommes" id="nb_pommes">
+        <label for="nb_pommes">Nombre de pommes : </label>
+        <input type="number" class="form-control" name="nb_pommes" id="nb_pommes">
     </div>
     <div class="form-group">
-    <label for="nb_cerise">Nombre de cerises : </label>
-    <input type="number" class="form-control" name="nb_cerise" id="nb_cerise">
+        <label for="nb_cerise">Nombre de cerises : </label>
+        <input type="number" class="form-control" name="nb_cerise" id="nb_cerise">
     </div>
     <button type="submit" class="btn btn-primary">Créer le panier  !</button>
 </form>

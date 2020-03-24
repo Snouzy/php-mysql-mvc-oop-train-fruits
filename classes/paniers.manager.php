@@ -5,7 +5,7 @@ require_once("classes/monPDO.class.php");
 class panierManager{
     public static function setPaniersFromDB(){
         $pdo = monPDO::getPDO();
-        $stmt = $pdo->prepare("Select identifiant, NomClient from panier");
+        $stmt = $pdo->prepare("SELECT identifiant, NomClient FROM panier");
         $stmt->execute();
         $paniers = $stmt->fetchAll();
         foreach ($paniers as $panier){
@@ -15,7 +15,7 @@ class panierManager{
 
     public static function getFruitPanier($identifiant){
         $pdo = monPDO::getPDO();
-        $req = "select f.nom as fruit, f.poids as poids, f.prix as prix from panier p inner join fruit f on f.identifiant = p.identifiant where p.identifiant = :id";
+        $req = "SELECT f.nom AS fruit, f.poids AS poids, f.prix AS prix FROM panier p INNER JOIN  fruit f ON f.identifiant = p.identifiant WHERE p.identifiant = :id";
         $stmt = $pdo->prepare($req);
         $stmt->bindValue(":id", $identifiant, PDO::PARAM_INT);
         $stmt->execute();
@@ -24,7 +24,7 @@ class panierManager{
 
     public static function getNbPanierInDB(){
         $pdo = monPDO::getPDO();
-        $req = "select count(*) as nbPanier from panier";
+        $req = "SELECT count(*) AS nbPanier FROM panier";
         $stmt = $pdo->prepare($req);
         $stmt->execute();
         $resultat = $stmt->fetch();
@@ -33,7 +33,7 @@ class panierManager{
 
     public static function insertIntoDB($identifiant,$nom){
         $pdo = monPDO::getPDO();
-        $req = "insert into panier (identifiant, NomClient) values (:id,:nom)";
+        $req = "INSERT INTO panier (identifiant, NomClient) VALUES (:id,:nom)";
         $stmt = $pdo->prepare($req);
         $stmt->bindValue(":id", $identifiant, PDO::PARAM_INT);
         $stmt->bindValue(":nom", $nom, PDO::PARAM_STR);

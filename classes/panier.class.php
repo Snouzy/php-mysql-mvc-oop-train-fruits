@@ -35,32 +35,71 @@ class Panier {
         $affichage .= '<table class="table">';
             $affichage .= '<thead>';
                 $affichage .= '<tr>';
-                    $affichage .= '<th scope="col">Image</th>';
-                    $affichage .= '<th scope="col">Nom</th>';
-                    $affichage .= '<th scope="col">Poids</th>';
-                    $affichage .= '<th scope="col">Prix</th>';
+                    $affichage .= '<td scope="col">Image</td>';
+                    $affichage .= '<td scope="col">Nom</td>';
+                    $affichage .= '<td scope="col">Poids</td>';
+                    $affichage .= '<td scope="col">Prix</td>';
+                    $affichage .= '<td scope="col">Action</td>';
+                    $affichage .= '<td scope="col">Action</td>';
                 $affichage .= '</tr>';
             $affichage .= '</thead>';
         $affichage .= '<tbody>';
         foreach ($this->pommes as $pomme) {
-            $affichage .= '<tr>';
-                $affichage .= '<td>' . $pomme->getImageSmall() . '</th>';
-                $affichage .= '<td>' . $pomme->getNom() . '</th>';
-                $affichage .= '<td>' . $pomme->getPoids() . '</th>';
-                $affichage .= '<td>' . $pomme->getPrix() . '</th>';
-            $affichage .= '</tr>';
+            $affichage .= $this->displayInfos($pomme);
         }
         foreach ($this->cerises as $cerise) {
-            $affichage .= '<tr>';
-                $affichage .= '<td>' . $cerise->getImageSmall() . '</th>';
-                $affichage .= '<td>' . $cerise->getNom() . '</th>';
-                $affichage .= '<td>' . $cerise->getPoids() . '</th>';
-                $affichage .= '<td>' . $cerise->getPrix() . '</th>';
-            $affichage .= '</tr>';
+            $affichage .= $this->displayInfos($cerise);
         }
-            $affichage .= '</tbody>';
+        $affichage .= '</tbody>';
         $affichage .= '</table>';
         return $affichage;
+    }
+
+    private function displayInfos($fruit) {
+        $affichage = '<tr>';
+            $affichage .= '<td>' . $fruit->getImageSmall() . '</td>';
+            $affichage .= '<td>' . $fruit->getNom() . '</td>';
+            $affichage .= '<td>';
+
+            //Affiche la modification du poids
+            if(isset($_GET['idFruit']) && $_GET['idFruit'] === $fruit->getNom()) {
+                $affichage .= '<form method="POST" action="#">';
+                    $affichage .= "<input type='hidden' value='". $fruit->getNom() ."' name='idFruit' id='modification'>";
+                    $affichage .= "<input type='number' name='poidsFruit' id='poidsFruit' value='" . $fruit->getPoids() . "'>";
+            } else {
+                $affichage .=  $fruit->getPoids();
+            }
+
+            $affichage .= '</td>';
+            $affichage .= '<td>';
+
+            //Affiche la modification du poids
+            if(isset($_GET['idFruit']) && $_GET['idFruit'] === $fruit->getNom()) {
+                $affichage .= "<input type='number' name='prixFruit' id='prixFruit' value='" . $fruit->getPrix() . "'>";
+            } else {
+                $affichage .=  $fruit->getPrix();
+            }
+                
+            $affichage .= '</td>';
+            $affichage .= '<td>';
+            if(isset($_GET['idFruit']) && $_GET['idFruit'] === $fruit->getNom()) {
+                $affichage .= "<button type='submit' class='btn btn-success'>Valider</button>";
+                $affichage .= '</form>';
+            } else {
+                $affichage .= '<form method="GET" action="#">';
+                    $affichage .= "<input type='hidden' name='idFruit' value='". $fruit->getNom() ."' id='idFruit'>";
+                    $affichage .= "<input type='submit' class='btn btn-primary' value='Modifier'>";
+                $affichage .= '</form>';
+            }
+            $affichage .= '</td>';
+            $affichage .= '<td>';
+                $affichage .= '<form method="GET" action="#">';
+                    $affichage .= "<input type='submit' class='btn btn-primary' value='Supprimer'>";
+                $affichage .= '</form>';
+            $affichage .= '</td>';
+        $affichage .= '</tr>';
+        return $affichage;
+        // $affichage .= "<button type='submit' class='btn btn-danger'>Supprimer</button>";
     }
 
     public function addFruit($fruit) {
