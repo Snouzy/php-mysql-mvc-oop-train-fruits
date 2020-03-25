@@ -30,14 +30,31 @@ class Fruit{
         $affichage .= "Prix : " . $this->prix . "<br />";
         return $affichage;
     }
-
+    // fruitManager::getClientOfTheFruit($this->nom) .' ';
     public function afficherListeFruit(){
         $affichage = '<div class="card text-center">';
             $affichage .= $this->getAffichageIMG();
             $affichage .= '<div class="card-body">';
                 $affichage .= '<h5 class="card-title">Nom : ' . $this->nom . '</h5>';
-                $affichage .= '<p class="card-text">Poids : ' . $this->poids . '<br />';
-                $affichage .= "Prix : " . $this->prix . "</p>";
+                $affichage .= '<p class="card-text">';
+                    $affichage .= 'Poids : ' . $this->poids . '<br />';
+                    $affichage .= 'Prix : ' . $this->prix . '<br />';
+                    $affichage .= 'Panier : ';
+                    $affichage .= '<form method="POST" action="#">';
+                        $affichage .= '<input type="hidden" name="idFruit" value="'. $this->nom .'" id="idFruit" />';
+                        $affichage .= '<select name="panierChoisi" id="panierChoisi" onChange="submit()" class="form-control-sm">';
+                            $clients = panierManager::getAllClients();
+                            foreach($clients as $client){
+                                $nomClient = $client['NomClient'];
+                                if($nomClient === fruitManager::getClientOfTheFruit($this->nom)) {
+                                    $affichage .= '<option selected value="'.$client['identifiant'].'">' . $nomClient . '</option>';
+                                } else {
+                                    $affichage .= '<option value="'.$client['identifiant'].'">' . $nomClient . '</option>';
+                                }
+                            }
+                        $affichage .= '</select>';
+                    $affichage .= '</form>';
+                $affichage .= "</p>";
             $affichage .= "</div>";
         $affichage .= "</div>";
         return $affichage;

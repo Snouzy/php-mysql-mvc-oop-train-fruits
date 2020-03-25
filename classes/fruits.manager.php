@@ -57,13 +57,42 @@ class fruitManager{
         $pdo = monPDO::getPDO();
         $req = "UPDATE fruit SET identifiant = null WHERE Nom = :nom";
         $stmt = $pdo->prepare($req);
-        $stmt->bindValue(":nom", $nomFruit);
+        $stmt->bindValue(":nom", $nomFruit, PDO::PARAM_STR);
         try {
             return $stmt->execute();
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
             return false;
         }
-    } 
+    }
+
+    public static function getClientOfTheFruit($nomFruit) {
+        $pdo = monPDO::getPDO();
+        $req = "SELECT p.NomClient 
+        AS Client 
+        FROM panier p 
+        INNER JOIN fruit f
+        ON f.identifiant = p.identifiant
+        WHERE f.nom = :nom";
+        $stmt = $pdo->prepare($req);
+        $stmt->bindValue(":nom", $nomFruit, PDO::PARAM_STR);
+        $stmt->execute();
+        $res = $stmt->fetch();
+        return $res['Client'];
+    }
+
+    public static function updatePanierFruit($panierChoisi, $idFruit){
+        $pdo = monPDO::getPDO();
+        $req = "UPDATE fruit SET identifiant = :panierChoisi WHERE Nom = :idFruit";
+        $stmt = $pdo->prepare($req);
+        $stmt->bindValue(":panierChoisi", $panierChoisi, PDO::PARAM_INT);
+        $stmt->bindValue(":idFruit", $idFruit, PDO::PARAM_STR);
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>

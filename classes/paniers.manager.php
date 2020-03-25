@@ -44,5 +44,14 @@ class panierManager{
             return false;
         }
     }
+
+    public static function getAllClients(){
+        $pdo = monPDO::getPDO();
+        $req = "SELECT DISTINCT NomClient, identifiant FROM `panier`";
+        $stmt = $pdo->prepare($req);
+        $stmt->execute();
+        $resultat = $stmt->fetchAll();
+        return $resultat;
+    }
 }
 ?>
