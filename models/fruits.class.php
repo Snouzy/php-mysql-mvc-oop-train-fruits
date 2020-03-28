@@ -1,29 +1,29 @@
 <?php 
 require_once("../controllers/Fruits.manager.php");
-class Fruit{
+class Fruit {
     private $nom;
     private $poids;
     private $prix;
 
     public static $fruits = [];
 
-    public function __construct($nom,$poids,$prix){
+    public function __construct($nom,$poids,$prix) {
         $this->nom = $nom;
         $this->poids = $poids;
         $this->prix = $prix;
     }
 
-    public function getNom(){
+    public function getNom() {
         return $this->nom;
     }
-    public function getPoids(){
+    public function getPoids() {
         return $this->poids;
     }
-    public function getPrix(){
+    public function getPrix() {
         return $this->prix;
     }
 
-    public function __toString(){
+    public function __toString() {
         $affichage = $this->getAffichageIMG();
         $affichage .= "Nom : " . $this->nom . "<br />";
         $affichage .= "Poids : " . $this->poids . "<br />";
@@ -31,7 +31,7 @@ class Fruit{
         return $affichage;
     }
     // fruitManager::getClientOfTheFruit($this->nom) .' ';
-    public function afficherListeFruit(){
+    public function afficherListeFruit() {
         $affichage = '<div class="card text-center">';
             $affichage .= $this->getAffichageIMG();
             $affichage .= '<div class="card-body">';
@@ -60,29 +60,29 @@ class Fruit{
         return $affichage;
     }
 
-    public function saveInDB($idPanier){
+    public function saveInDB($idPanier) {
         return fruitManager::insertIntoDB($this->nom, $this->poids,$this->prix,$idPanier);
     }
 
-    private function getAffichageIMG(){
-        if(preg_match("/cerise/",$this->nom)){
+    private function getAffichageIMG() {
+        if(preg_match("/cerise/",$this->nom)) {
             return "<img class=\"card-img-top mx-auto\" style='width:200px' src ='../assets/images/cherry.png' alt='image cerise' /><br/>";
         }
-        if(preg_match("/pomme/",$this->nom)){
+        if(preg_match("/pomme/",$this->nom)) {
             return "<img class=\"card-img-top mx-auto\" style='width:200px' src ='../assets/images/apple.png' alt='image pomme' /><br/>";
         }
     }
 
     public function getImageSmall(){
-        if(preg_match("/cerise/",$this->nom)){
+        if(preg_match("/cerise/",$this->nom)) {
             return "<img class=\"card-img-top mx-auto\" style='width:50px' src ='../assets/images/cherry.png' alt='image cerise' /><br/>";
         }
-        if(preg_match("/pomme/",$this->nom)){
+        if(preg_match("/pomme/",$this->nom)) {
             return "<img class=\"card-img-top mx-auto\" style='width:50px' src ='../assets/images/apple.png' alt='image pomme' /><br/>";
         }
     }
 
-    public static function genererUniqueID(){
+    public static function genererUniqueID() {
         return fruitManager::getNbFruitsInDB() + 1;
     }
 

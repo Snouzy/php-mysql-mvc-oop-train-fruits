@@ -3,6 +3,7 @@
     include("menu.php");
     require_once("../utils/formatage.utile.php");
 ?>
+
 <div class="container">
     <?php echo utile::gererTitreNiveau1('Snouz\'fruits, the php POO marketplace !💙') ; ?>
     <div class="row">
@@ -33,6 +34,7 @@
             </div>
         </div>
 </div>
+
 <?php 
     include("../common/footer.php");
 ?>
