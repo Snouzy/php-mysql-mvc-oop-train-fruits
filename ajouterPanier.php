@@ -6,7 +6,7 @@
     include("common/menu.php");
 ?>
 <div class="container">
-<?php echo utile::gererTitreNiveau2("Ajout d'un panier :"); ?>
+<?php echo utile::gererTitreNiveau2("➕ Ajout d'un panier :"); ?>
 
 <form class="" action="#" method ="POST">
     <div class="form-group ">
@@ -45,9 +45,7 @@
                 $p->addFruit($fruit);
                 $cpt++;
             } 
-            echo $p;
-            echo "OK";
-
+            echo 'Done 😉';
         } else {
             echo "L'ajout n'a pas fonctionné";
         }

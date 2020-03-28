@@ -7,7 +7,7 @@
     include("common/header.php");
     include("common/menu.php");  
 ?>
-
+<?php echo utile::gererTitreNiveau2("⚙ Gestion des paniers :"); ?>
 <div class="container">
 
     <?php

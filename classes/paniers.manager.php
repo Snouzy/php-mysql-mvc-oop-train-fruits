@@ -47,7 +47,7 @@ class panierManager{
 
     public static function getAllClients(){
         $pdo = monPDO::getPDO();
-        $req = "SELECT DISTINCT NomClient, identifiant FROM `panier`";
+        $req = "SELECT identifiant, NomClient FROM `panier`";
         $stmt = $pdo->prepare($req);
         $stmt->execute();
         $resultat = $stmt->fetchAll();
