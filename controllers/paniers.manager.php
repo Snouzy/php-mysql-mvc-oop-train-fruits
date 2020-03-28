@@ -1,7 +1,7 @@
 <?php
 
-require_once("classes/panier.class.php");
-require_once("classes/monPDO.class.php");
+require_once("../models/panier.class.php");
+require_once("../models/monPDO.class.php");
 class panierManager{
     public static function setPaniersFromDB(){
         $pdo = monPDO::getPDO();

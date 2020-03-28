@@ -1,9 +1,9 @@
 <?php 
-    require_once("classes/fruits.class.php");
-    require_once("classes/panier.class.php");
-    require_once("classes/formatage.utile.php");
-    include("common/header.php");
-    include("common/menu.php");
+    require_once("../models/fruits.class.php");
+    require_once("../models/panier.class.php");
+    require_once("../utils/formatage.utile.php");
+    include("../common/header.php");
+    include("../controllers/menu.php");
 ?>
 <div class="container">
 <?php echo utile::gererTitreNiveau2("➕ Ajout d'un panier :"); ?>
@@ -45,13 +45,21 @@
                 $p->addFruit($fruit);
                 $cpt++;
             } 
-            echo 'Done 😉';
+            echo '
+            <div class="alert alert-success mt-3" role="alert">
+                <h4 class="alert-heading">Félicitations!</h4>
+                <p>✅ Le panier a bien été ajouté à la base de donnée.</p>
+            </div>';
         } else {
-            echo "L'ajout n'a pas fonctionné";
+            echo '
+            <div class="alert alert-danger mt-3" role="alert">
+                <h4 class="alert-heading">Arrrrrgh...</h4>
+                <p>L\'ajout n\'a pas été effectué... Veuillez réessayer</p>
+            </div>';
         }
     }
 ?>
 </div>
 <?php 
-    include("common/footer.php");
+    include("../common/footer.php");
 ?>

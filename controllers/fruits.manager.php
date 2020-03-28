@@ -1,8 +1,8 @@
 <?php
 
-require_once("classes/fruits.class.php");
-require_once("classes/monPDO.class.php");
-class fruitManager{
+require_once("../models/fruits.class.php");
+require_once("../models/monPDO.class.php");
+class FruitManager{
     public static function setFruitsFromDB(){
         $pdo = monPDO::getPDO();
         $stmt = $pdo->prepare("SELECT f.nom AS Nom, f.poids AS Poids, f.prix AS Prix, p.NomClient AS Client FROM fruit f INNER JOIN panier p ON f.identifiant = p.identifiant");

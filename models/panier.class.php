@@ -1,6 +1,6 @@
 <?php
-require_once "classes/formatage.utile.php";
-require_once "classes/paniers.manager.php";
+require_once "../utils/formatage.utile.php";
+require_once "../controllers/Paniers.manager.php";
 class Panier {
     public static $paniers = [];
 
@@ -31,7 +31,7 @@ class Panier {
     }
 
     public function __toString() {
-        $affichage = utile::gererTitreNiveau2('Contenu du panier ' . $this->identifiant . " :");
+        $affichage = utile::gererTitreNiveau2('Contenu du panier ' . $this->identifiant  . ' de ' . $this->nomClient . " :");
         $affichage .= '<table class="table">';
             $affichage .= '<thead>';
                 $affichage .= '<tr>';

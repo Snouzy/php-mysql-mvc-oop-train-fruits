@@ -1,5 +1,5 @@
 <?php 
-require_once("classes/fruits.manager.php");
+require_once("../controllers/Fruits.manager.php");
 class Fruit{
     private $nom;
     private $poids;
@@ -66,19 +66,19 @@ class Fruit{
 
     private function getAffichageIMG(){
         if(preg_match("/cerise/",$this->nom)){
-            return "<img class=\"card-img-top mx-auto\" style='width:200px' src ='sources/images/cherry.png' alt='image cerise' /><br/>";
+            return "<img class=\"card-img-top mx-auto\" style='width:200px' src ='../assets/images/cherry.png' alt='image cerise' /><br/>";
         }
         if(preg_match("/pomme/",$this->nom)){
-            return "<img class=\"card-img-top mx-auto\" style='width:200px' src ='sources/images/apple.png' alt='image pomme' /><br/>";
+            return "<img class=\"card-img-top mx-auto\" style='width:200px' src ='../assets/images/apple.png' alt='image pomme' /><br/>";
         }
     }
 
     public function getImageSmall(){
         if(preg_match("/cerise/",$this->nom)){
-            return "<img class=\"card-img-top mx-auto\" style='width:50px' src ='sources/images/cherry.png' alt='image cerise' /><br/>";
+            return "<img class=\"card-img-top mx-auto\" style='width:50px' src ='../assets/images/cherry.png' alt='image cerise' /><br/>";
         }
         if(preg_match("/pomme/",$this->nom)){
-            return "<img class=\"card-img-top mx-auto\" style='width:50px' src ='sources/images/apple.png' alt='image pomme' /><br/>";
+            return "<img class=\"card-img-top mx-auto\" style='width:50px' src ='../assets/images/apple.png' alt='image pomme' /><br/>";
         }
     }
 

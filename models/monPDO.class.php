@@ -1,5 +1,5 @@
 <?php
-require_once('common/db.infos.php');
+require_once('../common/db.infos.php');
 
 class monPDO{
     private const HOST_NAME = dbInfos::HOST_NAME;

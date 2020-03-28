@@ -1,13 +1,17 @@
 <?php
-    require_once("classes/fruits.class.php");
-    require_once("classes/fruits.manager.php");
-    require_once("classes/panier.class.php");
-    require_once("classes/monPDO.class.php");
-    require_once("classes/paniers.manager.php");
-    include("common/header.php");
-    include("common/menu.php");  
+    require_once("../models/fruits.class.php");
+    require_once("../controllers/fruits.manager.php");
+    require_once("../models/panier.class.php");
+    require_once("../models/monPDO.class.php");
+    require_once("../controllers/Paniers.manager.php");
+    include("../common/header.php");
+    include("../controllers/menu.php");  
 ?>
-<?php echo utile::gererTitreNiveau2("⚙ Gestion des paniers :"); ?>
+<?php 
+    echo utile::gererTitreNiveau2("⚙ Gestion des paniers :"); 
+    echo "<hr />";
+?>
+
 <div class="container">
 
     <?php
@@ -60,5 +64,5 @@
     ?>
 </div>
 <?php 
-    include("common/footer.php");
+    include("../common/footer.php");
 ?>
